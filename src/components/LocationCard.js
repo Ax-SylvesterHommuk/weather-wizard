@@ -12,7 +12,7 @@ const LocationCard = ({ location, onPress }) => {
 
   const fetchWeatherData = async (city) => {
     try {
-      const data = await WeatherService.fetchWeatherData(city);
+      const data = await WeatherService.fetchWeatherData(city); // Pass city to fetchWeatherData
       setWeatherData(data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
