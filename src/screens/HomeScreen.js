@@ -31,11 +31,14 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Select a Location</Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Select a Location</Text>
+      </View>
       <FlatList
         data={locations}
         renderItem={renderLocationCard}
         keyExtractor={(item) => item}
+        style={styles.flatList} // Added style prop for FlatList
       />
     </View>
   );
@@ -47,10 +50,18 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#fff',
   },
+  titleContainer: {
+    justifyContent: 'center', // Center items vertically
+    alignItems: 'center', // Center items horizontally
+    marginBottom: 16,
+  },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginTop: 24,
+  },
+  flatList: {
+    flex: 1, // Take up remaining space
   },
   selectedLocationContainer: {
     marginTop: 16,
