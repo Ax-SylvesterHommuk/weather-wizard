@@ -1,10 +1,9 @@
 // src/screens/DetailScreen.js
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import WeatherCard from '../components/WeatherCard'; // Corrected import statement
 import WeatherService from '../services/WeatherService';
 
-const HomeScreen = () => {
+const DetailsScreen = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -43,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailScreen;
+export default DetailsScreen;
