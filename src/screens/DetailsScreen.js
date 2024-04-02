@@ -1,18 +1,20 @@
+// src/screens/DetailsScreen.js
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import WeatherService from '../services/WeatherService';
 
-const DetailsScreen = () => {
+const DetailsScreen = ({ route }) => {
+  const { city } = route.params; // Get the city parameter from the navigation route
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchWeatherData();
-  }, []);
+    fetchWeatherData(city); // Fetch weather data for the specified city
+  }, [city]);
 
-  const fetchWeatherData = async () => {
+  const fetchWeatherData = async (city) => {
     try {
-      const data = await WeatherService.fetchWeatherData();
+      const data = await WeatherService.fetchWeatherData(city);
       setWeatherData(data);
       setLoading(false);
     } catch (error) {

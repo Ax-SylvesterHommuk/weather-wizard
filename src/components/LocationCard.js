@@ -1,9 +1,11 @@
 // src/components/LocationCard.js
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 import WeatherService from '../services/WeatherService';
 
-const LocationCard = ({ location, onPress }) => {
+const LocationCard = ({ location }) => {
+  const navigation = useNavigation(); // Get navigation object
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
@@ -23,8 +25,13 @@ const LocationCard = ({ location, onPress }) => {
     return Math.round(kelvin - 273.15);
   };
 
+  const handlePress = () => {
+    // Navigate to DetailsScreen with the selected city as a parameter
+    navigation.navigate('Details', { city: location });
+  };
+
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={handlePress}>
       <View style={styles.cardContainer}>
         <Text>{location}</Text>
         {weatherData && (
